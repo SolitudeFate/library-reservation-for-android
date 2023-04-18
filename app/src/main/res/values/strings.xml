@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Library Reservation For Android</string>
+    <string name="reserve_room">请输入明天要预约的管室</string>
+    <string name="reserve_seat">请输入明天要预约的座位号</string>
+    <string name="reserve_cookie">请输入JSESSIONID</string>
+    <string name="helper_text">JSESSIONID输入格式为"JSESSIONID=XXX"</string>
+    <string name="title">响应结果</string>
+    <string name="secondary_text">点击预约获取响应结果</string>
+    <string name="reserve">点击预约 </string>
+    <string name="retry">对方网络不太好，再重新预约一次吧</string>
+    <string name="success">明天的座位已预约成功，请去微信图书馆预约页面确认座位</string>
+    <string name="test_text">当前时间范围内你已有预约的座位，详情请去我的预约查看！</string>
+</resources>
