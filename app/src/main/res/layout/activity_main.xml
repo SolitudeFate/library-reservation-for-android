@@ -105,7 +105,7 @@
                 android:id="@+id/tv_cookie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="JSESSIONID=B6CA42F8F89A1B621F08F755A7125081"
+                android:text=""
                 />
 
         </com.google.android.material.textfield.TextInputLayout>

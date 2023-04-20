@@ -5,14 +5,23 @@ import com.chaquo.python.PyObject;
 import com.chaquo.python.android.AndroidPlatform;
 import com.chaquo.python.Python;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_card_title = findViewById(R.id.tv_card_title);
         tv_secondary = findViewById(R.id.tv_secondary);
         tv_response = findViewById(R.id.tv_response);
+
         findViewById(R.id.btn_reserve).setOnClickListener(this);
 
         initPython();
@@ -48,28 +58,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String seat = tv_seat.getText().toString();
                 String jsessionid = tv_cookie.getText().toString();
 
-//                try {
-//                    PyObject obj = py.getModule("library_reservation").callAttr("reserve",
-//                            new Kwarg("room", room), new Kwarg("zwid", seat), new Kwarg("cookie", jsessionid));
-//                    String result = obj.toJava(String.class);
-//                    if (result == "") {
-//                        tv_response.setText(R.string.success);
-//                    } else {
-//                        tv_response.setText(result);
-//                    }
-//                } catch (Exception e) {
-//                    tv_response.setText(R.string.retry);
-//                }
+                PyObject obj1 = py.getModule("reflection")
+                        .callAttr("room_to_gsid",new Kwarg("room", room));
+                PyObject obj2 = py.getModule("reflection")
+                        .callAttr("get_month");
+                PyObject obj3 = py.getModule("reflection")
+                        .callAttr("get_day");
 
-                PyObject obj = py.getModule("library_reservation").callAttr("reserve",
-                        new Kwarg("room", room), new Kwarg("zwid", seat), new Kwarg("cookie", jsessionid));
-                String result = obj.toJava(String.class);
-                if (result == "") {
-                    tv_response.setText(R.string.success);
-                } else {
-                    tv_response.setText(result);
+                String gsid = obj1.toJava(String.class);
+                String month = obj2.toJava(String.class);
+                String day = obj3.toJava(String.class);
+
+                try {
+                    // 创建 OkHttpClient 对象
+                    OkHttpClient client = new OkHttpClient();
+
+                    // 创建 FormBody 对象，用于存储请求参数
+                    FormBody.Builder formBuilder = new FormBody.Builder()
+                            .add("gsid", gsid)
+                            .add("zwid", seat)
+                            .add("day", day)
+                            .add("month", month)
+                            .add("starttime", "8:00")
+                            .add("endtime", "22:00");
+                    RequestBody requestBody = formBuilder.build();
+
+                    // 创建 Request 对象
+                    Request request = new Request.Builder()
+                            .url("https://bgweixin.sspu.edu.cn/app/readroom/ylsyySave.do")
+                            .post(requestBody)
+                            .addHeader("Cookie", jsessionid)
+                            .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36 NetType/WIFI MicroMessenger/7.0.20.1781(0x6700143B) WindowsWechat(0x6309001c) XWEB/6500")
+                            .addHeader("Referer", "https://bgweixin.sspu.edu.cn/app/readroom/index.do")
+                            .build();
+
+                    // 发送请求
+                    Response response = client.newCall(request).execute();
+
+                    // 获取响应体
+                    String responseBody = response.body().string();
+
+                    if (responseBody == ""){
+                        tv_response.setText(R.string.success);
+                    } else {
+                        tv_response.setText(responseBody);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    tv_response.setText(R.string.retry);
                 }
-
                 break;
         }
     }
@@ -79,4 +116,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Python.start(new AndroidPlatform(this));
         }
     }
+
 }
