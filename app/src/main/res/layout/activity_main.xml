@@ -164,15 +164,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:minLines="2"
-                    android:text=""
+                    android:minHeight="40dp"
+                    android:text="@string/initialization"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="40dp"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="@color/purple_500" />
+
+                <ImageView
+                    android:id="@+id/weixin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="150dp"/>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/btn_mar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"

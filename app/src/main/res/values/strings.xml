@@ -4,9 +4,19 @@
     <string name="reserve_seat">请输入明天要预约的座位号</string>
     <string name="reserve_cookie">请输入JSESSIONID</string>
     <string name="helper_text">JSESSIONID输入格式为"JSESSIONID=XXX"</string>
-    <string name="title">响应结果</string>
-    <string name="secondary_text">点击预约获取响应结果</string>
+    <string name="title">预约结果</string>
+    <string name="secondary_text">长按则恢复初始的界面</string>
     <string name="reserve">点击预约 </string>
     <string name="retry">对方网络不太好，再重新预约一次吧</string>
     <string name="success">明天的座位已预约成功，请去微信图书馆预约页面确认座位</string>
+    <string name="initialization">点击预约按钮获取预约结果</string>
+    <string name="one">该APP的作者是：刘玉堃</string>
+    <string name="two">本人对页面设计非常满意，你是不是也这么觉得</string>
+    <string name="three">祝大家考研顺利上岸</string>
+    <string name="four">做了5天，有4天都在找bug，哭了</string>
+    <string name="five">在2023年4月20日下午，已经准备放弃了，晚上回到宿舍突然它能行了！</string>
+    <string name="six">来图书馆学习就别一直玩手机了啊……</string>
+    <string name="seven">别点了别点了…… 没了没了……</string>
+    <string name="eight">还点？我知道了，你是还想给作者打赏吧？微信二维码已经给你准备好了</string>
+    <string name="others">真的没了……</string>
 </resources>
