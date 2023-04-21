@@ -8,7 +8,11 @@ APP适用于经常约同一个位置，因为你的座位和馆室自己是清�
 
 # 使用方法
 
-点击[library reservation for android APP](app/release)，将**app-release**通过QQ发送到手机下载。**不能通过微信发送！（微信会给 .apk 添加 .p 后缀）**
+下载：[library reservation for android APP](https://github.com/SolitudeFate/library-reservation-java-for-android/releases/download/v1.0/library-reservation-v1.0.apk)
+
+将apk通过QQ发送到手机下载。**不能通过微信发送！（微信会给 .apk 添加 .p 后缀）**
+
+该apk在项目的保存位置：`app/release`
 
 + 第一次打开APP，无论输入是否正确，都会闪退
 
