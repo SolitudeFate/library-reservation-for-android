@@ -252,4 +252,4 @@ OkHttp是一个来自[Square](https://link.juejin.cn/?target=https%3A%2F%2Fsquar
 
 # 疑惑
 
-该apk的实现，仅仅是Java通过OkHttp成功发送请求，但是Java调用Python的Requests并未成功，目前仍未找到原因，有人知道的话望告知
+该app的实现，仅仅是Java通过OkHttp成功发送请求，但是Java调用Python的Requests并未成功，目前仍未找到原因，有人知道的话望告知
