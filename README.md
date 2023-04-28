@@ -185,7 +185,6 @@ import com.chaquo.python.Python;
 #### 调用Python前首先需要初始化Python的环境
 
 ```
-// 初始化Python环境
 void initPython(){
     if (! Python.isStarted()) {
         Python.start(new AndroidPlatform(this));
